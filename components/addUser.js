@@ -46,6 +46,9 @@ export default class UserForm extends React.Component {
                         ToastAndroid.show('Saved', ToastAndroid.SHORT);
                         this.props.navigation.pop();
                     }
+                })
+                .catch((error) => {
+                    console.error(error);
                 });
             } else {
                 ToastAndroid.show('There is no connection!', ToastAndroid.LONG);

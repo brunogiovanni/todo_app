@@ -33,7 +33,7 @@ export default class Tasks extends Component {
     }
 
     componentDidUpdate() {
-        if (this.props.navigation !== undefined && this.props.navigation.getParam('update') === true) {
+        if (this.props.navigation.getParam('update') !== undefined && this.props.navigation.getParam('update') === true) {
             this.getToken();
         }
     }
@@ -133,6 +133,7 @@ export default class Tasks extends Component {
                     {this.state.tasks.length > 0 ?
                         <SwipeListView
                             data={this.state.tasks}
+                            keyExtractor={(item, index) => item.id.toString()}
                             renderItem={ (data, rowMap) => (
                                 <TouchableHighlight onPress={() => { this.editTask(data.item); }} underlayColor={"#000"}>
                                     <View style={styles.rowFront}>
